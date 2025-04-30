@@ -1,3 +1,16 @@
 <div class="upload-modal">
     <i class="pi pi-times" (click)="closeModal()"></i>
+    <h4 class="title">Upload Document</h4>
+    <div class="input">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" [(ngModel)]="formData.name">
+        <label for="category">Type</label>
+        <input type="text" name="category" id="category" [(ngModel)]="formData.type">
+        <label for="description">Description</label>
+        <textarea  name="description" class="textarea" id="description" [(ngModel)]="formData.description"></textarea>
+    </div>
+    <div class="form">
+      <input class="file-input" type="file" (change)="onUpload($event)">      
+    </div>
+    <input class="submit" type="submit" (click)="submit()" value="Upload">
 </div>

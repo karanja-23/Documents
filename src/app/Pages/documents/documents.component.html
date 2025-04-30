@@ -1,10 +1,9 @@
-@if (openModal) {
-  <app-upload-modal
-    [openModal]="openModal"
-    (close)="closeModal()"
-  ></app-upload-modal>
-}
-<div class="container" >
+<app-upload-modal 
+  *ngIf="openModal" 
+  [openModal]="openModal" 
+  (close)="closeModal()">
+</app-upload-modal>
+<div class="container" [style.opacity] = "opacity()" >
     
     <div class="actions">
         <div class="add-button" (click)="showModal()" >
