@@ -1,0 +1,12 @@
+.content {
+    position: absolute;
+    width: 85%;
+    height: calc(100% - 220px);
+    box-sizing: border-box;
+    top: 100px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%) translateX(37.5px); /* Adjust for 75px offset */
+}

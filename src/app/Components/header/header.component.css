@@ -1,0 +1,25 @@
+@import "primeicons/primeicons.css";
+.header{
+    position: fixed;
+    top: 0 ;
+    left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;    
+    padding-left: 30px;
+    width: calc(100% - 60px);
+    color: rgb(20, 20, 59);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2px 30px;
+    justify-content: space-between;
+    background-color: white;
+}
+.greeting{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;    
+    font-weight: 500;
+}
