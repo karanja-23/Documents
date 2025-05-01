@@ -1,66 +1,162 @@
 @import "primeicons/primeicons.css";
-.container {
+/* Container Styles */
+.table-container {
+    max-width: 100%;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
     box-sizing: border-box;
-    width: 100%;
-}
-.actions{
-    box-sizing: border-box;
-    width: 100%;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header, Search, and Buttons */
+  .actions {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    gap: 10px;
-    color: black;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.add-button{
-    border: none;
-    display: flex;
-    background-color: black;
-    padding: 0px 15px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    gap: 10px;
-    color: white;
     align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease;
-    opacity: 0.89;
-
-}
-.add-button:hover{
-    background-color: rgb(47, 47, 56);
-}
-.search{
     display: flex;
+    align-items: center;
+  }
+  
+  .add-button:hover {
+    background-color: black;
+  }
+  
+  .add-button i {
+    margin-right: 8px;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 0.9rem;
+  }
+  
+  .search i {
+    position: absolute;
+    right: 10px;
+    font-size: 1rem;
+    color: #888;
+  }
+  
+  /* Table Wrapper */
+  .custom-table-wrapper {
+    overflow-x: auto;
+    min-height: 300px;
+  }
+  
+  .custom-docs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    position: relative;
+    
+  }
+  
+  .custom-docs-table th, .custom-docs-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .custom-docs-table th {
     background-color: black;
     color: white;
+    font-weight: bold;
+  }
+  
+  .custom-docs-table tbody tr {
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-docs-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Empty Message */
+  .empty-message {
+    text-align: center;    
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #5e5959;
+   
+  }
+  
+  /* Pagination */
+  .paginator {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 0px 10px 0px 0px;
-    box-sizing: border-box;
-    border: 2px solid rgb(228, 226, 226);
+    margin-top: 20px;
+  }
+  
+  .paginator button {
+    padding: 8px 16px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
     border-radius: 5px;
-    opacity: 0.89;
-    cursor: pointer;    
-
-}
-.search input{
-    border: none;
-    background-color: white;
-    padding: 10px 25px 10px 15px;
-    font-weight: 500;
-    outline: none;
-    color: black;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1rem;
+  }
+  
+  .paginator button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .paginator span {
+    font-size: 1rem;
+    color: #333;
+  }
+  .view-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
     box-sizing: border-box;
-}
+    max-width: 90px;
+  }
+  
+  .view-button i {
+    margin-right: 5px;
+  }
+
+  .pdf-viewer-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+ 
