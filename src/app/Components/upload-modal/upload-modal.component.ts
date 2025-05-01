@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormInput } from '../../Interfaces/form-data';
 import { FormsModule } from '@angular/forms';
 import { DocumentsService } from '../../Services/documents.service';
+
 @Component({
   selector: 'app-upload-modal',
   imports: [FileUploadModule, ButtonModule, FormsModule],
@@ -15,7 +16,7 @@ export class UploadModalComponent {
   constructor (private documentService:DocumentsService){}
   @Input() openModal: boolean = false;
   @Output() close = new EventEmitter();
-
+  showMessage: boolean = false
   closeModal() {
     this.close.emit();
   }
@@ -33,6 +34,12 @@ export class UploadModalComponent {
       this.formData.document = input.files[0];
     }
   }
+  viewDocument(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.formData.document = input.files[0];
+    }
+  }
   submit() {
     const form = new FormData();
     form.append('name', this.formData.name);
@@ -41,7 +48,14 @@ export class UploadModalComponent {
     form.append('document', this.formData.document);
 
     this.documentService.postDocuments(form).then((response) => {
-      console.log(response);
+      if (response.message === "Document created successfully") {
+        this.documentService.getDocuments()
+        this.closeModal()
+        this.showMessage = true
+        setTimeout(() => {          
+          this.showMessage = false
+        }, 2000);
+      }
     })
   
   }

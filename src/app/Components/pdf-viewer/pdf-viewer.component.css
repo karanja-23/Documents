@@ -1,0 +1,28 @@
+
+@import "primeicons/primeicons.css";
+.pdf-viewer-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .close-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem; 
+    background-color: black; 
+    color: white;
+    padding: 5px ;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
