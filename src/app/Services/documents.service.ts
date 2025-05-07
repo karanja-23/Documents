@@ -6,7 +6,7 @@ import { Injectable, signal } from '@angular/core';
 export class DocumentsService {
 
   constructor() { }
-  url = 'https://mobileimsbackend.onrender.com/documents'
+  url = 'http://127.0.0.1:5000/documents'
   documents= signal([])
   async postDocuments(data: FormData) {
     const response = await fetch(this.url, {
