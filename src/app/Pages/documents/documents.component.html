@@ -59,10 +59,16 @@
           <td>{{ doc.type }}</td>
           <td>{{ doc.description }}</td>
           <td >
-            <div class="view-button" 
+            <div class="buttons">
+              <div class="view-button" 
               (click)="openViewer(doc.document)"
             >
               <i class="pi pi-eye" style="font-size: 1rem"></i> View
+            </div>
+            <div class="view-button" (click)="startSigning(doc)">
+              <i class="pi pi-sign-in" style="font-size: 1rem"></i> Sign
+            </div>
+            
             </div>
           </td>
         </tr>

@@ -158,5 +158,8 @@
     padding: 20px;
     box-sizing: border-box;
   }
-  
+.buttons{
+  display: flex;
+  gap: 10px;
+}
  
