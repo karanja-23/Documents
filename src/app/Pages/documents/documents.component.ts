@@ -73,6 +73,34 @@ export class DocumentsComponent implements OnInit {
       this.updatePagination();
     }
   }
+  async startSigning(doc: any) {
+    console.log('Sending doc to backend:', doc);
+    try {
+      const response = await fetch('http://127.0.0.1:5000/create-envelope', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          base64Content: doc.document,
+          filename: doc.name
+        })
+      });
+  
+      const data = await response.json();
+      console.log('Response from backend:', data); // 👈 ADD THIS
+      if (data.url) {
+        console.log('Redirecting to signing URL:', data.url); // Log the URL
+        window.location.href = data.url; // Redirect to DocuSign
+      } else {
+        console.log(data)
+        console.warn('No URL returned for signing.');
+      }
+    } catch (error) {
+      console.error('Error starting signing process:', error); // Already here
+    }
+  }
+  
+  
+  
   
   
   updatePagination() {
