@@ -17,7 +17,7 @@
   
   .add-button {
     padding: 10px 20px;
-    background-color: black;
+   background-color: rgb(6, 149, 206);
     color: white;
     font-size: 1rem;
     border-radius: 5px;
@@ -27,7 +27,7 @@
   }
   
   .add-button:hover {
-    background-color: black;
+    background-color: rgb(6, 149, 206);
   }
   
   .add-button i {
@@ -75,8 +75,8 @@
   }
   
   .custom-docs-table th {
-    background-color: black;
-    color: white;
+   background-color: rgb(211, 210, 210);
+    color: black;
     font-weight: bold;
   }
   
@@ -131,7 +131,7 @@
     align-items: center;
     justify-content: center;
     padding: 6px 10px;
-    background-color: black;
+    background-color: rgb(6, 149, 206);
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -142,6 +142,9 @@
   
   .view-button i {
     margin-right: 5px;
+  }
+  .view-button:hover {
+    background-color: rgb(28, 183, 245);
   }
 
   .pdf-viewer-wrapper {

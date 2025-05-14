@@ -10,7 +10,7 @@ import { OpacityService } from '../../Services/opacity.service';
 export class MenuComponent {
   menuWidth = '60px';
   isImageVisible = false;
-  imgSource = 'assets/menuLogo.png';
+  imgSource = 'assets/logo.png';
   
 
   constructor(public opacityService:OpacityService){}

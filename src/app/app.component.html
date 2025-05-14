@@ -1,4 +1,7 @@
-<div class="main" [style.opacity]="opacity()">
+<app-login *ngIf="!isLoggedIn"></app-login>
+
+
+<div class="main" *ngIf="isLoggedIn" [style.opacity]="opacity()">
   <app-menu></app-menu>
   <app-header></app-header>
 

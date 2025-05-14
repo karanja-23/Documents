@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,26 @@ export class DocumentsService {
    return await response.json()
    
   }
+  openDocuSignEditor(base64Pdf: string, fileName: string): void {
+    fetch('http://localhost:5000/api/docusign/create-sender-view', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        document_base64: base64Pdf,
+        file_name: fileName
+      })
+    })
+    .then((response) => response.json())
+    .then((res) => {
+      window.open(res.url, '_blank');
+    })
+    .catch((err) => {
+      console.error('Error launching DocuSign sender view', err);
+    });
+  }
+  
   
   
 }

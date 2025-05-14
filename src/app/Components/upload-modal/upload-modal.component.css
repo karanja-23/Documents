@@ -6,7 +6,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
-    background-color: black;
+    background-color: whitesmoke;
     border: 2px solid rgb(228, 226, 226);
     display: flex;
     flex-direction: column;
@@ -23,18 +23,19 @@
 }
 
 .pi-times {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
-    color: white;
+    color: rgb(54, 50, 50);
 }
 
 .title {
     font-weight: 500;
     font-size: 1rem;
     margin-bottom: 20px;
+    color: rgb(54, 50, 50);
 }
 
 .input {
@@ -49,23 +50,25 @@
 .input label {
     font-size: 0.85rem;
     margin: 5px 0 2px;
-    color: #ccc;
+    color: black
 }
 
 .input input[type="text"] {
-    background-color: #1e1e1e;
+    
     border: 1px solid #555;
     border-radius: 4px;
     padding: 8px;
-    color: #fff;
+    color: rgb(70, 67, 67);
     font-size: 14px;
     margin-bottom: 10px;
     transition: border-color 0.3s ease;
+    outline: none;
+    border-color: rgb(194, 191, 191);
 }
 
 .input input[type="text"]:focus {
     outline: none;
-    border-color: white;
+    border-color: rgb(107, 103, 103);
 }
 
 /* File input */
@@ -82,16 +85,11 @@
     width: 100%;
     padding: 10px;
     background-color: transparent;
-    border: 2px solid #444;
+    border: 1px solid #444;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
     transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.file-input:hover {
-    border-color: white;
-    background-color: #333;
 }
 
 .file-input:focus {
@@ -100,7 +98,8 @@
 }
 
 .file-input::-webkit-file-upload-button {
-    background-color: white;
+    background-color: rgb(6, 149, 206);
+    color: white;
     border: none;
     padding: 8px 20px;
     font-size: 14px;
@@ -109,15 +108,11 @@
     transition: background-color 0.3s ease;
 }
 
-.file-input::-webkit-file-upload-button:hover {
-    background-color: white;
-}
 
-/* Submit Button */
 .submit {
     padding: 10px 20px;
-    background-color: white;
-    color: black;
+    background-color: rgb(6, 149, 206);
+    color:white;
     border: none;
     border-radius: 5px;
     font-size: 14px;
@@ -127,15 +122,15 @@
 }
 
 .submit:hover {
-    background-color: rgb(70, 67, 67);
+   background-color: rgb(6, 149, 206);;
     color: white;
 }
 .textarea {
-    background-color: #1e1e1e;
+    
     border: 1px solid #555;
     border-radius: 4px;
     padding: 8px;
-    color: #fff;
+    color: rgb(70, 67, 67);
     font-size: 14px;
     margin-bottom: 10px;
     min-height: 80px;
@@ -147,5 +142,5 @@
 
 .textarea:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: rgb(6, 149, 206);
 }

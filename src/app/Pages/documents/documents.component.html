@@ -4,6 +4,9 @@
     (close)="closeModal()"
   ></app-upload-modal>
 }
+<app-docusign-modal *ngIf="openDocusignModal" [url]="docusignUrl"></app-docusign-modal>
+
+
 <div class="pdf-viewer-wrapper" *ngIf="selectedPdfUrl">
   <i class="pi pi-times" (click)="closePdfViewer()"></i>
   <app-pdf-viewer [pdfUrl]="selectedPdfUrl"
@@ -61,13 +64,11 @@
           <td >
             <div class="buttons">
               <div class="view-button" 
-              (click)="openViewer(doc.document)"
+              (click)="viewDocWithDocusign(doc.name, doc)"
             >
               <i class="pi pi-eye" style="font-size: 1rem"></i> View
             </div>
-            <div class="view-button" (click)="startSigning(doc)">
-              <i class="pi pi-sign-in" style="font-size: 1rem"></i> Sign
-            </div>
+           
             
             </div>
           </td>

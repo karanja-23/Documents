@@ -5,10 +5,12 @@ import { UploadModalComponent } from '../../Components/upload-modal/upload-modal
 import { OpacityService } from '../../Services/opacity.service';
 import { DocumentsService } from '../../Services/documents.service';
 import { PdfViewerComponent } from '../../Components/pdf-viewer/pdf-viewer.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DocusignModalComponent } from '../../Components/docusign-modal/docusign-modal.component';
 @Component({
   selector: 'app-documents',
   standalone: true,
-  imports: [UploadModalComponent, CommonModule, TableModule, PdfViewerComponent],
+  imports: [UploadModalComponent, CommonModule, TableModule, PdfViewerComponent,HttpClientModule,DocusignModalComponent],
   templateUrl: './documents.component.html',
   styleUrl: './documents.component.css'
 })
@@ -17,6 +19,8 @@ export class DocumentsComponent implements OnInit {
   filteredDocs = signal<any[]>([]);
   paginatedDocuments = signal<any[]>([]);
   selectedPdfUrl: string | null = null;
+  docusignUrl: string | null = null;
+  openDocusignModal: boolean = false;
 
   rows = 4;
   currentPage = 1;
@@ -29,7 +33,8 @@ export class DocumentsComponent implements OnInit {
 
   constructor(
     public opacityService: OpacityService,
-    private documentService: DocumentsService
+    private documentService: DocumentsService,
+    private http: HttpClient
   ) {}
 
   openViewer(base64Pdf: string) {
@@ -124,4 +129,56 @@ export class DocumentsComponent implements OnInit {
       this.updatePagination();
     }
   }
+  base64ToFile(base64: string, filename: string): File {
+    if (!base64) {
+      console.error('Base64 string is undefined or null.');
+      throw new Error('Base64 content is missing');
+    }
+    
+    // Strip out prefix if it exists
+    const base64Content = base64.split(',').pop()?.trim() ?? '';
+    
+    try {
+      const byteString = atob(base64Content);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      return new File([ab], filename, { type: 'application/pdf' });
+    } catch (e) {
+      console.error('Invalid base64 string passed to atob:', e);
+      throw new Error('Invalid base64 document content');
+    }
+  }
+  
+  viewDocWithDocusign(name: string, doc: any) {
+    if (!doc.document) {
+      console.error('Document content is missing.');
+      return;  // Handle the error gracefully
+    }
+    if (typeof doc.document !== 'string') {
+      console.error('Document content is not a valid string:', doc.document);
+      return;
+    }
+    
+    const formData = new FormData();
+    const file = this.base64ToFile(doc.document, name); // ✅ convert base64 to File
+    formData.append('name', name);
+    formData.append('file', file); // ✅ proper File object
+  
+    this.http.post('http://127.0.0.1:5000/api/docusign/view', formData).subscribe({
+      next: (res: any) => {
+        console.log('DocuSign view response:', res.url);
+        this.docusignUrl = res.url;
+        this.openDocusignModal = true;
+      },
+      error: (err) => {
+        console.error('DocuSign view error:', err);
+      }
+    });
+  }
+  
+  
+  
 }
